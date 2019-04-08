@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/Vue.js"></script>
+
+    <style>
+        .red {
+            color: red;
+        }
+        .thin {
+            font-weight: 200;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .active {
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!--正常情况下 class的使用-->
+ <h1 class="red">这是一个很大的h1</h1>
+    <!--Vue下面的class样式-->
+    <h1 v-bind:class="[redClass, thinClass]">Vue下Class样式一：数组语法</h1>
+    <h1 v-bind:class="[isRed ? redClass : '', thinClass]">Vue下Class样式一：数组语法之三元表达式</h1>
+
+    <h1 v-bind:class="{red:isRed}">Vue下Class样式二：对象语法</h1>
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'a',
+            redClass:'red',
+            isRed:true,
+            thinClass:'thin',
+            isThin:false
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

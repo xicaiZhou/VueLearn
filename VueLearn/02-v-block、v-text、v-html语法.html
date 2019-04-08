@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/Vue.js"></script>
+    <style>
+        [v-bloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <!--v-bloak 能够有效解决 插值表达式在网速较慢情况下的闪烁问题-->
+    <p v-bloak>+++++{{message}}</p>
+    <!--v-text 默认没有闪烁问题  v-text会覆盖原本的内容-->
+    <h4 v-text="message"></h4>
+    <!--v-html帮我们解决vue中data数据源中的html代码-->
+    <div v-html="msg"></div>
+
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'v-blcok、v-text、v-html语法',
+            msg:'<h1>哈哈哈哈哈哈这是vue中的h1</h1>'
+        }
+    });
+</script>
+</body>
+</html>

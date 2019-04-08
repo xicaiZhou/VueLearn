@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/Vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--true显示 false隐藏-->
+    <p v-if="isShow">v-if可以控制元素的显示和隐藏</p>
+    <!--v-bind可以简写为:后面跟上要绑定的属性-->
+    <button v-bind:title="mytitle">aaaaa</button>
+    <!--vue中提供v-on事件绑定机制  v-on缩略写法@-->
+    <!--
+    v-on事件修饰符：
+    top:阻止冒泡；
+    prevent:阻止默认行为;
+    capture;先执行父视图的响应事件在执行自己的响应事件;
+    self:只有点击了我 自己，我才会相应；
+    once:只会触发一次；
+    -->
+    <button :title="mytitle" v-on:click.stop.once="showAlert">aaaaa</button>
+
+    <a href="http://www.baidu.com" @click.prevent="push">百度</a>
+
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isShow: true,
+            mytitle:'这是一个自己定义的title'
+
+        },
+        methods:{
+            showAlert:function () {
+             alert("11111");
+            }
+        }
+    })
+</script>
+</body>
+</html>
